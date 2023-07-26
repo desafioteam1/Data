@@ -1,37 +1,61 @@
-from llama_index import SimpleDirectoryReader, GPTListIndex, readers, GPTSimpleVectorIndex, LLMPredictor, PromptHelper, ServiceContext
-from langchain import OpenAI
+from gpt_index import SimpleDirectoryReader, GPTListIndex, GPTSimpleVectorIndex, LLMPredictor, PromptHelper
+from langchain.chat_models import ChatOpenAI
+from langchain.llms import OpenAI
 import sys
 import os
+import gradio as gr
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 
-os.environ["OPENAI_API_KEY"] = "aaa"
+load_dotenv()
 
-# Cargar el modelo de lenguaje preentrenado en español
-llm_predictor = LLMPredictor(llm=OpenAI(temperature=0.5, model_name="text-davinci-003", max_tokens=2000))
-prompt_helper = PromptHelper(max_input_size=4096, num_output=2000, max_chunk_overlap=20, chunk_size_limit=600)
-service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
+os.chdir(os.path.dirname(__file__))
+Api_key = os.environ.get("OPENAI_API_KEY")
 
-# Crear la aplicación Flask
-app = Flask(__name__)
+def construct_index(directory_path):
 
-directory_path = "Data\Data_bot"
-documents = SimpleDirectoryReader(directory_path).load_data()
-index = GPTSimpleVectorIndex.from_documents(documents, service_context=service_context)
-index.save_to_disk('index.json')
+    
+    # set maximum input size
+    max_input_size = 4096
+    # set number of output tokens
+    num_outputs = 2000
+    # set maximum chunk overlap
+    max_chunk_overlap = 20
+    # set chunk size limit
+    chunk_size_limit = 600 
+
+    # define prompt helper
+    prompt_helper = PromptHelper(max_input_size, num_outputs, max_chunk_overlap, chunk_size_limit=chunk_size_limit)
+
+    # define LLM
+    llm_predictor = LLMPredictor(llm=OpenAI(temperature=0.5, model_name="gpt-3.5-turbo", max_tokens=num_outputs, openai_api_key= Api_key))
+    documents = SimpleDirectoryReader(directory_path).load_data()
+    
+    index = GPTSimpleVectorIndex(documents, llm_predictor=llm_predictor, prompt_helper=prompt_helper)
+
+    index.save_to_disk('index.json')
+
+    return index
 
 
 def chat_bot(query):
     index = GPTSimpleVectorIndex.load_from_disk('index.json')
-    respuesta = index.query(query)
-    return respuesta.respuesta
+    response = index.query(query, response_mode="compact")
+    return response.response
 
+app = Flask(__name__)
+index = construct_index("Data_bot")
 
-@app.route('/chat_bot', methods=['POST'])
-def query_ai():
+@app.route('/', methods=['GET'])
+def inicio():
+    return '¡Hola! Bienvenido a Sol7. ¿En qué puedo ayudarte?'
+
+@app.route('/chat', methods=['GET', 'POST'])
+def chatbot_api():
     data = request.get_json()
-    query = data['query']
-    respuesta = chat_bot(query)
-    return jsonify({'respuesta': respuesta})
+    input_text = data['input_text']
+    response = chat_bot(input_text)
+    return jsonify({'response': response})
 
 if __name__ == '__main__':
     app.run(debug=True)
