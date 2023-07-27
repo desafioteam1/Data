@@ -5,7 +5,7 @@ import sys
 import os
 import gradio as gr
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 
 load_dotenv()
 
@@ -38,24 +38,37 @@ def construct_index(directory_path):
     return index
 
 
-def chat_bot(query):
+def chat_bot(input_text):
     index = GPTSimpleVectorIndex.load_from_disk('index.json')
-    response = index.query(query, response_mode="compact")
+    response = index.query(input_text, response_mode="compact")
     return response.response
 
 app = Flask(__name__)
 index = construct_index("Data_bot")
 
 @app.route('/', methods=['GET'])
-def inicio():
-    return '¡Hola! Bienvenido a Sol7. ¿En qué puedo ayudarte?'
+def welcome():
+    return '¡Hola! Bienvenido a Sol7. En que te puedo ayudar?.'
 
-@app.route('/chat', methods=['GET', 'POST'])
+@app.route('/chat', methods=['POST'])
 def chatbot_api():
-    data = request.get_json()
-    input_text = data['input_text']
-    response = chat_bot(input_text)
-    return jsonify({'response': response})
+    try:
+        question = request.args.get('question')
+        if question:
+            response = chat_bot(question)
 
+            # Create a response object with plain text content
+            response_text = make_response(response)
+            response_text.headers['Content-Type'] = 'text/plain'
+            
+            return response_text
+        else:
+            return "Lo siento, la pregunta debe ser proporcionada en el formulario."
+    except Exception as e:
+        return f"Error: {str(e)}"
+    
+    
 if __name__ == '__main__':
     app.run(debug=True)
+
+ 
