@@ -1,5 +1,6 @@
 import spacy
-from flask import Flask, request, jsonify
+from flask import Flask, request
+#python -m spacy download es_core_news_sm
 
 app = Flask(__name__)
 
@@ -28,22 +29,25 @@ def obtener_respuesta(pregunta):
     else:
         # Otra intención no reconocida
         return intenciones_respuestas["otra_intencion"]
+    
+@app.route('/', methods=['GET'])
+def inicio():
+    return '¡Hola! Bienvenido a Sol7. ¿En qué puedo ayudarte?'
 
 # Ruta para recibir preguntas y devolver respuestas
-@app.route('/chat', methods=['POST'])
+@app.route('/chat', methods=['GET', 'POST'])
 def chat():
-    data = request.get_json()
-    pregunta = data['pregunta']
+    question = request.form['question']
 
-    if pregunta.lower() == 'hola' or pregunta.lower() == 'bienvenido':
+    if question.lower() == 'hola' or question.lower() == 'bienvenido':
         # Respuesta de bienvenida
         respuesta = 'Bienvenido a Sol7. ¿En qué puedo ayudarte?'
     else:
         # Obtener la respuesta del chatbot
-        respuesta = obtener_respuesta(pregunta)
+        respuesta = obtener_respuesta(question)
 
     # Devolver la respuesta en formato JSON
-    return jsonify({'respuesta': respuesta})
+    return respuesta
 
 if __name__ == '__main__':
     app.run(debug=True)
