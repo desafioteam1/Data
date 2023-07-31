@@ -1,7 +1,7 @@
 Pregunta: ¿Qué servicios ofrece su empresa de asesorías energéticas?
 Respuesta: EN Sol7 realizamos auditorias energeticas. Realizamos las mediciones y calificacion del certificado energetico del edificio y damos una propuesta para su mejora. Una vez aceptada, realizamos los cambios necesarios para mejorar el aislamiento y eficiencia de su vivienda.
 Pregunta: ¿Cómo puedo solicitar una valoración de eficiencia energética para mi edificio?
-Respuesta: Puedes rellenar el formulario de contacto y uno de nuestro técnicos se pondrá en contacto contigo.
+Respuesta: Puedes rellenar el formulario de contacto para comprobar si tu edificio es valido. Una vez aceptado uno de nuestro técnicos se pondrá en contacto contigo.
 Pregunta: ¿Cuáles son los beneficios de mejorar la eficiencia energética de un edificio?
 Respuesta: Una mayor eficiencia energética reduce la demanda de energía en general, lo que contribuye a una red eléctrica más estable y fiable, especialmente durante períodos de alta demanda.
 Las mejoras en la eficiencia energética a menudo implican un mejor aislamiento térmico y una mejor distribución del calor y el aire acondicionado, lo que conduce a un ambiente interior más cómodo y constante durante todo el año.
@@ -17,19 +17,9 @@ Con ellas realizarán un presupuesto. Una vez lo recibe el cliente, y después d
 Pregunta: ¿Cuánto tiempo lleva completar una valoración de eficiencia energética?
 Respuesta: El tiempo de la valoración depende de cada edificación. El primer paso es realizar la autoria, con la cual nuestro equipo realizara una propuesta de proyecto. Una vez aceptada, el tiempo de realizacion de la misma dependerá del propio edificio, de las técnicas a realizar, metros
 Pregunta: ¿Cuánto puedo ahorrar en costos de energía después de una mejora energética?
-Respuesta: La cantidad de ahorro en costos de energía después de realizar mejoras energéticas en un edificio puede variar significativamente según diversos factores, como el tipo de mejoras implementadas, el tamaño y el uso del edificio, el clima local y los hábitos de consumo de energía.
-Pregunta: ¿Ofrecen algún tipo de garantía o seguimiento después de completar las obras?
-Respuesta: 
-Pregunta: ¿Trabajan con clientes residenciales o solo con empresas?
-Respuesta: 
+Respuesta: La cantidad de ahorro en costos de energía después de realizar mejoras energéticas en un edificio puede variar significativamente según diversos factores, como el tipo de mejoras implementadas, el tamaño y el uso del edificio, el clima local y los hábitos de consumo de energía
 Pregunta: ¿Tienen experiencia trabajando con edificios de mi tipo o tamaño?
 Respuesta: Tenemos experiencia en distintos tipos de edificiaciones. Cuando concertes una cita, el técnico valorará las caracteristicas y te hará un presupuesto personalizado según las necesidades del edificio/vivienda.
-Pregunta: ¿Qué tecnologías utilizan para mejorar la eficiencia energética?
-Respuesta: 
-Pregunta: ¿Pueden ayudarme a obtener incentivos o subvenciones para proyectos de eficiencia energética?
-Respuesta: 
-Pregunta: ¿Cuál es su enfoque en cuanto a sostenibilidad y energías renovables?
-Respuesta: 
 Pregunta: ¿Trabajan con edificios antiguos o solo con construcciones más nuevas?
 Respuesta: Ambos! Dependiendo del aislamiento actual del edificio precisará unas soluciones u otras, pero nuestros técnicos valoraran tu caso en concreto para faciltarte un plan personalizado.
 Pregunta: ¿Cómo puedo programar una consulta o reunión para discutir las opciones de mejora energética para mi edificio?
