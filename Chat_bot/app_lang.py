@@ -31,6 +31,7 @@ def welcome():
 
 @app.route('/chat', methods=['POST'])
 def chatbot_gen():
+    
     try:
         question = request.args.get('question')
         if question:
