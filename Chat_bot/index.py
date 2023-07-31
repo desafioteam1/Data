@@ -1,9 +1,6 @@
-from gpt_index import SimpleDirectoryReader, GPTListIndex, GPTSimpleVectorIndex, LLMPredictor, PromptHelper
-from langchain.chat_models import ChatOpenAI
+from gpt_index import SimpleDirectoryReader, GPTSimpleVectorIndex, LLMPredictor, PromptHelper
 from langchain.llms import OpenAI
-import sys
 import os
-import gradio as gr
 from dotenv import load_dotenv
 
 
