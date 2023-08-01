@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/v2/predict', methods=['POST'])
 def predict():
     # Cargar el modelo entrenado
-    model = pickle.load(open('ruta_al_modelo_entrenado', 'rb'))
+    model = pickle.load(open('trained_model.pkl', 'rb'))
 
     # Obtener los datos de entrada del cuerpo JSON de la solicitud
     data = request.get_json()
