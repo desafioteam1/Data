@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def welcome():
-    return '¡Hola! Bienvenido a Sol7. En que te puedo ayudar?.'
+    return '¡Hola! Soy el asistente virtual de solsiete. ¿En qué puedo ayudarte hoy?'
 
 @app.route('/chat', methods=['POST'])
 def chatbot_gen():
