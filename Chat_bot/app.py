@@ -26,7 +26,7 @@ app = Flask(__name__)
 def welcome():
     return '¡Hola! Soy el asistente virtual de solsiete. ¿En qué puedo ayudarte hoy?'
 
-@app.route('/chat', methods=['POST'])
+@app.route('/chat', methods=['GET'])
 def chatbot_gen():
     
     try:
@@ -44,7 +44,7 @@ def chatbot_gen():
     except Exception as e:
         return f"Error: {str(e)}"
     
-@app.route('/chat_client', methods=['POST'])
+@app.route('/chat_client', methods=['GET'])
 def chatbot_client():
     try:
         question = request.args.get('question')
