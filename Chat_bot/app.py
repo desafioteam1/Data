@@ -44,7 +44,7 @@ def chatbot_gen():
     except Exception as e:
         return f"Error: {str(e)}"
     
-@app.route('/chat_client', methods=['POST'])
+@app.route('/chat_client', methods=['GET'])
 def chatbot_client():
     try:
         question = request.args.get('question')
